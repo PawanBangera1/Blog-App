@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-  # MongoDB Database
   mongodb:
     image: mongo:latest
     container_name: blog-app-mongodb
@@ -15,7 +14,6 @@ services:
     networks:
       - blog-network
 
-  # Node.js Application
   app:
     build: .
     container_name: blog-app
@@ -34,12 +32,10 @@ services:
     networks:
       - blog-network
 
-# Define volumes for data persistence
 volumes:
   mongodb_data:
     driver: local
 
-# Define network for service communication
 networks:
   blog-network:
     driver: bridge
